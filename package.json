@@ -1,26 +1,27 @@
 {
-  "name": "202308--avocado-store--nextjs-ts",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "next": "^13.4.19",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "@types/node": "20.5.4",
-    "@types/react": "18.2.21",
-    "prettier": "3.0.2",
-    "typescript": "5.1.6"
-  }
+	"name": "202308--avocado-store--nextjs-ts",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"prettier": "prettier --write ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"next": "^13.4.19",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "20.5.4",
+		"@types/react": "18.2.21",
+		"prettier": "3.0.2",
+		"typescript": "5.1.6"
+	}
 }

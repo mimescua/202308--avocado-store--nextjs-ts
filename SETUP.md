@@ -1,6 +1,7 @@
 # 1. NextJs (manual setup)
 
 ## Create the project directory
+
 ```console
 mkdir <project_name>
 cd <project_name>
@@ -16,6 +17,7 @@ echo -e '# 202308--avocado-store--nextjs-ts
 ```
 
 ### Initialize a Node project
+
 ```console
 npm init --y
 ```
@@ -86,12 +88,11 @@ body {
 			to bottom,
 			transparent,
 			rgb(var(--background-end-rgb))
-		)
-		rgb(var(--background-start-rgb));
+		) rgb(var(--background-start-rgb));
 }
 ```
 
-### Add src/pages/_app.tsx file
+### Add src/pages/\_app.tsx file
 
 ```ts
 import '@/styles/globals.css';
@@ -102,7 +103,7 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-### Add src/pages/_document.tsx file
+### Add src/pages/\_document.tsx file
 
 ```ts
 import { Head, Html, Main, NextScript } from 'next/document';
@@ -130,10 +131,8 @@ export default function Document() {
 import React from 'react';
 
 const Home = () => {
-    return (
-        <main>Hi</main>
-    )
-}
+	return <main>Hi</main>;
+};
 
 export default Home;
 ```
@@ -267,7 +266,7 @@ git commit -m "build: implement eslint"
 
 ```
 yarn add -D prettier
-yarn add -D --save-exact prettier
+yarn add -D --exact prettier
 ```
 
 ### Configure .prettierrc file
