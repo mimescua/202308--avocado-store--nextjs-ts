@@ -26,6 +26,7 @@ npm init --y
 
 ```console
 yarn add next react react-dom
+yarn add -D typescript @types/react @types/node
 code .
 ```
 
