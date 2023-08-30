@@ -7,7 +7,6 @@ const Home = () => {
 		window
 			.fetch('/api/avo')
 			.then((response) => response.json())
-			// .then(console.log);
 			.then(({ data, length }) => {
 				setProductList(data);
 			});
