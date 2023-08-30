@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
@@ -15,7 +14,6 @@ const Home = () => {
 	}, []);
 	return (
 		<main>
-			<Navbar />
 			<p>This is the Main page</p>
 			{productList.map((product, indx) => (
 				<div key={indx}>{product.name}</div>
