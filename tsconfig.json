@@ -15,7 +15,9 @@
 		"incremental": true,
 		"noImplicitAny": true,
 		"noImplicitReturns": true,
+		"baseUrl": ".",
 		"paths": {
+			"@database": ["./src/database/db.ts"],
 			"@/*": ["./src/*"]
 		}
 	},
