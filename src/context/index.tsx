@@ -1,4 +1,5 @@
 import useLocalStorage from '@hooks/useLocalStorage';
+import fetch from 'isomorphic-unfetch';
 import React, { MouseEventHandler, createContext, useEffect, useReducer } from 'react';
 
 const AvocadoStoreContext = createContext<any | undefined>(undefined);
@@ -93,8 +94,7 @@ const AvocadoStoreProvider: React.FC<Props> = ({ children }) => {
 
 	useEffect(() => {
 		try {
-			window
-				.fetch('/api/avo')
+			fetch('/api/avo')
 				.then((response) => response.json())
 				.then(({ data, lenght }) => {
 					onSuccess(data, lenght);

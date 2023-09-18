@@ -1,31 +1,27 @@
 .masonry {
 	display: inline-block;
 	width: 100%;
-}
-
-.card {
+	position: relative;
+	margin-bottom: 1rem;
 	border-radius: 0.5rem;
-	max-width: 14rem;
 	background-color: #ffffff;
-	cursor: pointer;
 	box-shadow:
 		rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
 		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-.figure {
-	position: relative;
-	margin: 0;
-	/* margin-bottom: 0.5rem; */
-	width: 100%;
-	height: 75%;
+.card {
+	max-width: 14rem;
+	text-decoration: none;
+	color: black;
+
+	cursor: pointer;
 }
 
-.image {
-	object-fit: cover;
-	border-radius: 0.5rem;
+.figure {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	border-radius: 0.5rem;
 }
 
 .info {
@@ -33,15 +29,8 @@
 	position: relative;
 	flex-direction: column;
 	justify-content: space-between;
-	/* align-items: center; */
-	padding: 0 1rem 0.5rem 1rem;
-}
-
-.info-row {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	margin: 0;
 }
 
 .title {
@@ -63,17 +52,17 @@
 
 .icon-liked,
 .icon-not-liked {
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0.5rem;
 	display: flex;
-	/* position: absolute; */
-	/* top: 0;
-	right: 0; */
 	padding: 0.25rem;
-	/* margin: 0.5rem; */
 	justify-content: center;
 	align-items: center;
 	border-radius: 9999px;
 	width: 1.5rem;
 	height: 1.5rem;
+	cursor: pointer;
 }
 
 .icon-liked {

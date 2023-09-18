@@ -1,5 +1,6 @@
 import NumberInput from '@components/NumberInput';
 import { AvocadoStoreContext } from '@context/index';
+import fetch from 'isomorphic-unfetch';
 import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 import { Feathericons } from 'src/assets/FeatherIcons';
@@ -14,8 +15,7 @@ const ProductItem = () => {
 	const { addProductsToCart, setProduct, incrementCount, decrementCount } = updater;
 
 	useEffect(() => {
-		window
-			.fetch(`/api/avo/${productId}`)
+		fetch(`/api/avo/${productId}`)
 			.then((response) => response.json())
 			.then((json) => {
 				setProduct(json);

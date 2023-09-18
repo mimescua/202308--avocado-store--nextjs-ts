@@ -2,17 +2,20 @@ import CardOrder from '@components/CardOrder';
 import { OrderList } from '@components/Orderlist';
 import { EmptyProducts } from '@components/warnings';
 import { AvocadoStoreContext } from '@context/index';
-import useRouting from '@hooks/useRouting';
+import router from 'next/router';
 import { useContext } from 'react';
 import styles from './order.module.css';
 
 const PreOrder = () => {
 	const { state, updater } = useContext(AvocadoStoreContext);
-	const { navigateTohome } = useRouting();
 	const { cart, cartProductsQty, cartProductsPrice } = state;
 	const { setCart } = updater;
 	const totalQty = cartProductsQty();
 	const totalPrice = parseFloat(cartProductsPrice().toFixed(2));
+
+	const navigateTohome = () => {
+		router.push('/');
+	};
 
 	const handleCheckout = () => {
 		setCart([]);

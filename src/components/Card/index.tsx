@@ -1,4 +1,6 @@
 import { AvocadoStoreContext } from '@context/index';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { MouseEventHandler, useContext } from 'react';
 import { Feathericons } from 'src/assets/FeatherIcons';
@@ -32,10 +34,6 @@ const Card: React.FC<TProduct> = (props) => {
 		setLiked([...currentLiked]);
 	};
 
-	const navigateToDetail = () => {
-		router.push(`/product/${id}`);
-	};
-
 	const likedIcon = (id: string) => {
 		const isInCart = liked.filter((product: TProduct) => product.id === id).length > 0;
 		return isInCart ? (
@@ -50,19 +48,15 @@ const Card: React.FC<TProduct> = (props) => {
 	};
 
 	return (
-		<div className={styles.masonry} onClick={navigateToDetail}>
-			<div className={styles.card}>
-				<figure className={styles.figure}>
-					<img className={styles.image} src={image} alt={name} />
-				</figure>
+		<div className={styles.masonry}>
+			<Link href={`/product/${id}`} className={styles.card}>
+				<Image src={image} className={styles.figure} width={200} height={200} alt={name} />
 				<p className={styles.info}>
 					<span className={styles.title}>{name}</span>
-					<span className={styles['info-row']}>
-						<span className={styles.price}>{`$${price}`}</span>
-						{likedIcon(id)}
-					</span>
+					<span className={styles.price}>{`$${price}`}</span>
 				</p>
-			</div>
+			</Link>
+			{likedIcon(id)}
 		</div>
 	);
 };

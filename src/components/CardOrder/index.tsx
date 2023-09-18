@@ -1,8 +1,8 @@
-import { AvocadoStoreContext } from '@context/index';
-// import { useRouter } from 'next/router';
 import NumberInput from '@components/NumberInput';
-import useRouting from '@hooks/useRouting';
-import React, { MouseEventHandler, useContext } from 'react';
+import { AvocadoStoreContext } from '@context/index';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useContext } from 'react';
 import styles from './CardOrder.module.css';
 
 const CardOrder: React.FC<TProductOrder> = (props) => {
@@ -17,35 +17,17 @@ const CardOrder: React.FC<TProductOrder> = (props) => {
 			attributes: { description, shape, hardiness, taste },
 		},
 	} = props;
-	// const [count, setCount] = useState<number>(qty);
-	const { navigateToDetail } = useRouting();
-	const { state, updater } = useContext(AvocadoStoreContext);
-	const { liked } = state;
-	const { setLiked, incrementProdQty, decrementProdQty } = updater;
 
-	const addProductsToLiked: MouseEventHandler<HTMLSpanElement> = (event) => {
-		event.stopPropagation();
-		setLiked([...liked, props]);
-	};
-
-	const removeProductsFromLiked: MouseEventHandler<HTMLSpanElement> = (event) => {
-		event.stopPropagation();
-		const currentLiked = [...liked];
-		const likedIndex = currentLiked.findIndex((obj) => obj.id === id);
-		currentLiked.splice(likedIndex, 1);
-
-		setLiked([...currentLiked]);
-	};
+	const { updater } = useContext(AvocadoStoreContext);
+	const { incrementProdQty, decrementProdQty } = updater;
 
 	return (
 		<div className={styles.card}>
-			<figure className={styles.figure}>
-				<img className={styles.image} src={image} alt={name} />
-			</figure>
+			<Image src={image} className={styles.figure} width={80} height={80} alt={name} />
 			<p className={styles.info}>
-				<span className={styles.title} onClick={() => navigateToDetail(id)}>
+				<Link href={`/product/${id}`} className={styles.title}>
 					{name}
-				</span>
+				</Link>
 				<span className={styles.price}>{`$${price}`}</span>
 			</p>
 			<div>
