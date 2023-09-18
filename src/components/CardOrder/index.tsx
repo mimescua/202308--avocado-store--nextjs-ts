@@ -28,9 +28,7 @@ const CardOrder: React.FC<TProductOrder> = (props) => {
 		setLiked([...liked, props]);
 	};
 
-	const removeProductsFromLiked: MouseEventHandler<HTMLSpanElement> = (
-		event
-	) => {
+	const removeProductsFromLiked: MouseEventHandler<HTMLSpanElement> = (event) => {
 		event.stopPropagation();
 		const currentLiked = [...liked];
 		const likedIndex = currentLiked.findIndex((obj) => obj.id === id);

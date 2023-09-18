@@ -11,8 +11,7 @@ const ProductItem = () => {
 	} = useRouter();
 	const { state, updater } = useContext(AvocadoStoreContext);
 	const { count, product } = state;
-	const { addProductsToCart, setProduct, incrementCount, decrementCount } =
-		updater;
+	const { addProductsToCart, setProduct, incrementCount, decrementCount } = updater;
 
 	useEffect(() => {
 		window
@@ -28,57 +27,27 @@ const ProductItem = () => {
 		<main>
 			<div className={styles.container}>
 				<figure className={styles.figure}>
-					<img
-						className={styles.image}
-						src={product?.image}
-						alt={product?.name}
-					/>
+					<img className={styles.image} src={product?.image} alt={product?.name} />
 				</figure>
 				<div className={styles.info}>
 					<p className={styles.title}>{product?.name}</p>
-					<p
-						className={styles.description}
-					>{`${product?.attributes.description}`}</p>
+					<p className={styles.description}>{`${product?.attributes.description}`}</p>
 				</div>
 			</div>
 			<nav className={styles.nav}>
 				<div className={styles.row}>
 					<ul className={styles.list}>
 						<li className={styles.attributes}>
-							<Feathericons
-								icon="droplet"
-								title={'SHAPE'}
-								className={styles.button}
-								width={36}
-								height={36}
-							/>
-							<small style={{ textAlign: 'center' }}>
-								{product?.attributes.shape}
-							</small>
+							<Feathericons icon="droplet" title={'SHAPE'} className={styles.button} width={36} height={36} />
+							<small style={{ textAlign: 'center' }}>{product?.attributes.shape}</small>
 						</li>
 						<li className={styles.attributes}>
-							<Feathericons
-								icon="thermometer"
-								title={'HARDINESS'}
-								className={styles.button}
-								width={36}
-								height={36}
-							/>
-							<small style={{ textAlign: 'center' }}>
-								{product?.attributes.hardiness}
-							</small>
+							<Feathericons icon="thermometer" title={'HARDINESS'} className={styles.button} width={36} height={36} />
+							<small style={{ textAlign: 'center' }}>{product?.attributes.hardiness}</small>
 						</li>
 						<li className={styles.attributes}>
-							<Feathericons
-								icon="message-circle"
-								title={'TASTE'}
-								className={styles.button}
-								width={36}
-								height={36}
-							/>
-							<small style={{ textAlign: 'center' }}>
-								{product?.attributes.taste}
-							</small>
+							<Feathericons icon="message-circle" title={'TASTE'} className={styles.button} width={36} height={36} />
+							<small style={{ textAlign: 'center' }}>{product?.attributes.taste}</small>
 						</li>
 					</ul>
 				</div>
@@ -90,11 +59,7 @@ const ProductItem = () => {
 						</li>
 						<li className={styles.actions}>
 							<small style={{ paddingBottom: 3 }}>Quantity</small>
-							<NumberInput
-								count={count}
-								incrementValue={incrementCount}
-								decrementValue={decrementCount}
-							/>
+							<NumberInput count={count} incrementValue={incrementCount} decrementValue={decrementCount} />
 						</li>
 						<li className={styles.actions} onClick={addProductsToCart}>
 							<span className={styles['add-to-cart']}>Add to Cart</span>

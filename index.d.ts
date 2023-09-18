@@ -1,11 +1,5 @@
 type Url = string;
-type Json =
-	| string
-	| number
-	| boolean
-	| null
-	| { [property: string]: Json }
-	| Json[];
+type Json = string | number | boolean | null | { [property: string]: Json } | Json[];
 
 type TProductId = string;
 

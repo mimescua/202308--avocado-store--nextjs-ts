@@ -35,11 +35,7 @@ body {
 	/* height: 100%; */
 	max-width: 475px;
 	overflow-y: auto;
-	background: linear-gradient(
-			to bottom,
-			transparent,
-			rgb(var(--green-light-rgb), 0.75)
-		)
+	background: linear-gradient(to bottom, transparent, rgb(var(--green-light-rgb), 0.75))
 		rgb(var(--background-start-rgb));
 }
 

@@ -11,9 +11,7 @@ interface Props {
 const OrderList: React.FC<Props> = (props) => {
 	return (
 		<>
-			{!props.productsQty &&
-				isEmptyArray(props.products) &&
-				props.onEmptyProducts()}
+			{!props.productsQty && isEmptyArray(props.products) && props.onEmptyProducts()}
 			{props.products.map(props.children ?? props.render)}
 		</>
 	);

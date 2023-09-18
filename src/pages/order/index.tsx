@@ -22,11 +22,7 @@ const PreOrder = () => {
 	return (
 		<main>
 			{!!totalQty && <p>Cart ({totalQty} products)</p>}
-			<OrderList
-				productsQty={totalQty}
-				products={cart}
-				onEmptyProducts={() => <EmptyProducts />}
-			>
+			<OrderList productsQty={totalQty} products={cart} onEmptyProducts={() => <EmptyProducts />}>
 				{(product) => <CardOrder key={product.id} {...product} />}
 			</OrderList>
 			{!!totalQty && (

@@ -23,9 +23,7 @@ const Card: React.FC<TProduct> = (props) => {
 		setLiked([...liked, props]);
 	};
 
-	const removeProductsFromLiked: MouseEventHandler<HTMLSpanElement> = (
-		event
-	) => {
+	const removeProductsFromLiked: MouseEventHandler<HTMLSpanElement> = (event) => {
 		event.stopPropagation();
 		const currentLiked = [...liked];
 		const likedIndex = currentLiked.findIndex((obj) => obj.id === id);
@@ -39,23 +37,14 @@ const Card: React.FC<TProduct> = (props) => {
 	};
 
 	const likedIcon = (id: string) => {
-		const isInCart =
-			liked.filter((product: TProduct) => product.id === id).length > 0;
+		const isInCart = liked.filter((product: TProduct) => product.id === id).length > 0;
 		return isInCart ? (
 			<span className={styles['icon-liked']} onClick={removeProductsFromLiked}>
-				<Feathericons
-					icon="heart"
-					stroke="rgb(var(--brown-rgb))"
-					fill="white"
-				/>
+				<Feathericons icon="heart" stroke="rgb(var(--brown-rgb))" fill="white" />
 			</span>
 		) : (
 			<span className={styles['icon-not-liked']} onClick={addProductsToLiked}>
-				<Feathericons
-					icon="heart"
-					stroke="rgb(var(--green-dark-rgb))"
-					fill="white"
-				/>
+				<Feathericons icon="heart" stroke="rgb(var(--green-dark-rgb))" fill="white" />
 			</span>
 		);
 	};

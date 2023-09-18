@@ -8,12 +8,7 @@ const Navbar = () => {
 			<ul className={styles.list}>
 				<li>
 					<Link href="/">
-						<Feathericons
-							icon="chevron-left"
-							width="36"
-							height="36"
-							color="black"
-						/>
+						<Feathericons icon="chevron-left" width="36" height="36" color="black" />
 					</Link>
 				</li>
 				<li className={styles.tittle}>Search Products</li>

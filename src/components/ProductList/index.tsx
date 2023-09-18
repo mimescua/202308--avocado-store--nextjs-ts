@@ -19,13 +19,8 @@ const ProductList: React.FC<Props> = (props) => {
 			{props.error && props.onError()}
 			{props.loading && props.onLoading()}
 			{!props.loading && !props.productsQty && props.onEmptyProducts()}
-			{!props.loading &&
-				!!props.productsQty &&
-				isEmptyArray(props.productsSearched) &&
-				props.onEmptysearchResult()}
-			{!props.loading &&
-				!props.error &&
-				props.productsSearched.map(props.children ?? props.render)}
+			{!props.loading && !!props.productsQty && isEmptyArray(props.productsSearched) && props.onEmptysearchResult()}
+			{!props.loading && !props.error && props.productsSearched.map(props.children ?? props.render)}
 		</>
 	);
 };

@@ -1,11 +1,5 @@
 import useLocalStorage from '@hooks/useLocalStorage';
-import React, {
-	MouseEventHandler,
-	createContext,
-	useEffect,
-	useReducer,
-} from 'react';
-// import { useLocalStorage } from '../hooks';
+import React, { MouseEventHandler, createContext, useEffect, useReducer } from 'react';
 
 const AvocadoStoreContext = createContext<any | undefined>(undefined);
 
@@ -52,21 +46,12 @@ const AvocadoStoreProvider: React.FC<Props> = ({ children }) => {
 	const [count, setCount] = React.useState<number>(1);
 
 	const [searchValue, setSearchValue] = React.useState('');
-	const { item: account, saveItem: saveAccount } = useLocalStorage(
-		'ACCOUNT',
-		{}
-	);
-	const { item: signOut, saveItem: saveSignOut } = useLocalStorage(
-		'SIGN-OUT',
-		true
-	);
+	const { item: account, saveItem: saveAccount } = useLocalStorage('ACCOUNT', {});
+	const { item: signOut, saveItem: saveSignOut } = useLocalStorage('SIGN-OUT', true);
 
-	const productsSearched = products.filter((product) =>
-		product.name.toUpperCase().includes(searchValue.toUpperCase())
-	);
+	const productsSearched = products.filter((product) => product.name.toUpperCase().includes(searchValue.toUpperCase()));
 	const cartProductsQty = () => cart.reduce((sum, { qty }) => sum + qty, 0);
-	const cartProductsPrice = () =>
-		cart.reduce((sum, { qty, detail: { price } }) => sum + qty * price, 0);
+	const cartProductsPrice = () => cart.reduce((sum, { qty, detail: { price } }) => sum + qty * price, 0);
 	const addProductsToCart: MouseEventHandler<HTMLElement> = (event) => {
 		event.stopPropagation();
 		if (!product) return;

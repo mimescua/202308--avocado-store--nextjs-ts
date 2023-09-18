@@ -11,11 +11,7 @@ const Order = () => {
 	return (
 		<main>
 			<p>This is the Order page</p>
-			<OrderList
-				productsQty={cart.lenght}
-				products={cart}
-				onEmptyProducts={() => <EmptyProducts />}
-			>
+			<OrderList productsQty={cart.lenght} products={cart} onEmptyProducts={() => <EmptyProducts />}>
 				{(product) => <CardOrder key={product.id} {...product} />}
 			</OrderList>
 		</main>

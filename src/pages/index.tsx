@@ -1,12 +1,7 @@
 import Card from '@components/Card';
 import { ProductList } from '@components/ProductList';
 import { Search } from '@components/Search';
-import {
-	EmptyProducts,
-	EmptyProductsSearch,
-	ProductsError,
-	ProductsLoading,
-} from '@components/warnings';
+import { EmptyProducts, EmptyProductsSearch, ProductsError, ProductsLoading } from '@components/warnings';
 import { AvocadoStoreContext } from '@context/index';
 import { useContext } from 'react';
 
@@ -18,11 +13,7 @@ const Home = () => {
 
 	return (
 		<main>
-			<Search
-				searchValue={searchValue}
-				setSearchValue={setSearchValue}
-				loading={loading}
-			/>
+			<Search searchValue={searchValue} setSearchValue={setSearchValue} loading={loading} />
 
 			<div className="columns">
 				{!loading && (
@@ -38,9 +29,7 @@ const Home = () => {
 					productsSearched={productsSearched}
 					onError={() => <ProductsError />}
 					onLoading={() => <ProductsLoading />}
-					onEmptysearchResult={() => (
-						<EmptyProductsSearch searchValue={searchValue} />
-					)}
+					onEmptysearchResult={() => <EmptyProductsSearch searchValue={searchValue} />}
 					onEmptyProducts={() => <EmptyProducts />}
 				>
 					{(product) => <Card key={product.id} {...product} />}

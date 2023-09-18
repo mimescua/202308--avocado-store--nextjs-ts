@@ -22,18 +22,12 @@ type Payload = (state: State<any>, payload: any) => State<any>;
 type Reducer<T> = (state: State<T>, action: Action<T>) => State<T>;
 
 function useLocalStorage<T>(itemName: string, initialValue: T): Output<T> {
-	const [state, dispatch] = useReducer<Reducer<T>>(
-		reducer,
-		initialState(initialState)
-	);
+	const [state, dispatch] = useReducer<Reducer<T>>(reducer, initialState(initialState));
 	const { item, loading, error } = state;
 
-	const onError = (error: any) =>
-		dispatch({ type: ActionTypes.error, payload: error });
-	const onSuccess = (item: T) =>
-		dispatch({ type: ActionTypes.success, payload: item });
-	const onSave = (item: T) =>
-		dispatch({ type: ActionTypes.save, payload: item });
+	const onError = (error: any) => dispatch({ type: ActionTypes.error, payload: error });
+	const onSuccess = (item: T) => dispatch({ type: ActionTypes.success, payload: item });
+	const onSave = (item: T) => dispatch({ type: ActionTypes.save, payload: item });
 
 	useEffect(() => {
 		setTimeout(() => {
