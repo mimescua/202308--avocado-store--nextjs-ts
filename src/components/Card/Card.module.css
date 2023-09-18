@@ -1,0 +1,85 @@
+.masonry {
+	display: inline-block;
+	width: 100%;
+}
+
+.card {
+	border-radius: 0.5rem;
+	max-width: 14rem;
+	background-color: #ffffff;
+	cursor: pointer;
+	box-shadow:
+		rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.figure {
+	position: relative;
+	margin: 0;
+	/* margin-bottom: 0.5rem; */
+	width: 100%;
+	height: 75%;
+}
+
+.image {
+	object-fit: cover;
+	border-radius: 0.5rem;
+	width: 100%;
+	height: 100%;
+}
+
+.info {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: space-between;
+	/* align-items: center; */
+	padding: 0 1rem 0.5rem 1rem;
+}
+
+.info-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+.title {
+	margin-right: 0.5rem;
+	margin-bottom: 0.5rem;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: 300;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.price {
+	font-size: 1.125rem;
+	line-height: 1.75rem;
+	font-weight: 500;
+}
+
+.icon-liked,
+.icon-not-liked {
+	display: flex;
+	/* position: absolute; */
+	/* top: 0;
+	right: 0; */
+	padding: 0.25rem;
+	/* margin: 0.5rem; */
+	justify-content: center;
+	align-items: center;
+	border-radius: 9999px;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.icon-liked {
+	background-color: rgb(var(--brown-rgb));
+}
+
+.icon-not-liked {
+	background-color: none;
+}

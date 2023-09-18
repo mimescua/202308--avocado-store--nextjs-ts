@@ -1,0 +1,37 @@
+/* Chrome, Safari, Edge, Opera */
+.change-qty input::-webkit-outer-spin-button,
+.change-qty input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+.change-qty input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+.change-qty {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.1rem 0.5rem;
+	border-radius: 999px;
+	border: solid thin rgb(var(--green-dark-rgb), 0.5);
+}
+
+.change-qty input[type='number'] {
+	border: none;
+	width: 100px;
+	font-size: 16px;
+	text-align: center;
+	outline: none;
+	background: none;
+}
+
+.control {
+	cursor: pointer;
+}
+
+.control:hover {
+	color: white;
+}

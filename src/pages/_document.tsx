@@ -4,13 +4,15 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				{/* favicon */}
-				{/* webfont */}
-				{/* stylesheet */}
-				{/* script.js */}
 				<title>Avocado store</title>
 				<meta property="og:title" content="My page title" key="title" />
 				<link rel="icon" href="/logo.svg" sizes="any" />
+				<link rel="preconnect" href="https://fonts.googleapis.com" />
+				<link rel="preconnect" href="https://fonts.gstatic.com" />
+				<link
+					href="https://fonts.googleapis.com/css2?family=Sen&display=swap"
+					rel="stylesheet"
+				/>
 			</Head>
 			<body>
 				<Main />

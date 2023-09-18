@@ -25,6 +25,17 @@ type TProduct = {
 	attributes: TProductAttributes;
 };
 
+type TProductOrder = {
+	id: TProductId;
+	qty: number;
+	detail: TProduct;
+};
+
+type TProductOrderList = {
+	id: string;
+	products: TProductOrder[];
+};
+
 type TAPIAVODetailResponse = TProduct;
 
 type TAPIAvoResponse = {

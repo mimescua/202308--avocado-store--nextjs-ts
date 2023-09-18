@@ -20,7 +20,10 @@
 			"@database": ["./src/database/db.ts"],
 			"@components/*": ["./src/components/*"],
 			"@styles/*": ["./src/styles/*"],
-			"@hooks/*": ["./src/hooks/*"]
+			"@context/*": ["./src/context/*"],
+			"@hooks/*": ["./src/hooks/*"],
+			"@assets/*": ["./src/assets/*"],
+			"@utils/*": ["./src/utils/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
