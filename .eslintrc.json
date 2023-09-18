@@ -5,5 +5,13 @@
 	},
 	"rules": {
 		"no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
-	}
+	},
+	"overrides": [
+		{
+			"files": ["*.ts", "*.tsx"],
+			"rules": {
+				"no-undef": "off"
+			}
+		}
+	]
 }
