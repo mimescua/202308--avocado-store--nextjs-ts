@@ -8,14 +8,14 @@ import styles from './product.module.css';
 
 const ProductItem = () => {
 	const {
-		query: { productId },
+		query: { id },
 	} = useRouter();
 	const { state, updater } = useContext(AvocadoStoreContext);
 	const { count, product } = state;
 	const { addProductsToCart, setProduct, incrementCount, decrementCount } = updater;
 
 	useEffect(() => {
-		fetch(`/api/avo/${productId}`)
+		fetch(`/api/avo/${id}`)
 			.then((response) => response.json())
 			.then((json) => {
 				setProduct(json);
