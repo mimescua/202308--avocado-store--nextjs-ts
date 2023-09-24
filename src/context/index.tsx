@@ -1,6 +1,5 @@
 import useLocalStorage from '@hooks/useLocalStorage';
-import fetch from 'isomorphic-unfetch';
-import React, { MouseEventHandler, createContext, useEffect, useReducer } from 'react';
+import React, { createContext } from 'react';
 
 const AvocadoStoreContext = createContext<any | undefined>(undefined);
 
@@ -16,26 +15,6 @@ interface ProductState {
 }
 
 const AvocadoStoreProvider: React.FC<Props> = ({ children }) => {
-	const [productsState, setProductsState] = useReducer(
-		(state: ProductState, newState: Partial<ProductState>) => ({
-			...state,
-			...newState,
-		}),
-		{
-			products: [],
-			productsQty: 0,
-			loading: true,
-			error: false,
-		}
-	);
-	const { products, productsQty, loading, error } = productsState;
-
-	const onError = (error: any) => setProductsState({ error });
-	const onSuccess = (data: TProduct[], lenght: number) =>
-		setProductsState({ products: data, productsQty: lenght, loading: false });
-
-	const [product, setProduct] = React.useState<TProduct>();
-
 	const [liked, setLiked] = React.useState<Array<TProduct>>([]);
 
 	const [cart, setCart] = React.useState<Array<TProductOrder>>([]);
@@ -50,11 +29,11 @@ const AvocadoStoreProvider: React.FC<Props> = ({ children }) => {
 	const { item: account, saveItem: saveAccount } = useLocalStorage('ACCOUNT', {});
 	const { item: signOut, saveItem: saveSignOut } = useLocalStorage('SIGN-OUT', true);
 
-	const productsSearched = products.filter((product) => product.name.toUpperCase().includes(searchValue.toUpperCase()));
+	const productsSearched = (products: TProduct[]): TProduct[] =>
+		products.filter((product) => product.name.toUpperCase().includes(searchValue.toUpperCase()));
 	const cartProductsQty = () => cart.reduce((sum, { qty }) => sum + qty, 0);
 	const cartProductsPrice = () => cart.reduce((sum, { qty, detail: { price } }) => sum + qty * price, 0);
-	const addProductsToCart: MouseEventHandler<HTMLElement> = (event) => {
-		event.stopPropagation();
+	const addProductsToCart = (product: TProduct) => {
 		if (!product) return;
 
 		const currentCart = [...cart];
@@ -92,26 +71,10 @@ const AvocadoStoreProvider: React.FC<Props> = ({ children }) => {
 		setCount((prevValue) => prevValue - 1);
 	};
 
-	useEffect(() => {
-		try {
-			fetch('/api/avo')
-				.then((response) => response.json())
-				.then(({ data, lenght }) => {
-					onSuccess(data, lenght);
-				});
-		} catch (error) {
-			onError(error);
-		}
-	}, []);
-
 	const state = {
 		count,
 		searchValue,
 		productsSearched,
-		productsQty,
-		loading,
-		error,
-		product,
 		cart,
 		cartProductsQty,
 		cartProductsPrice,
@@ -121,7 +84,6 @@ const AvocadoStoreProvider: React.FC<Props> = ({ children }) => {
 
 	const updater = {
 		setSearchValue,
-		setProduct,
 		setCart,
 		setLiked,
 		setOrders,

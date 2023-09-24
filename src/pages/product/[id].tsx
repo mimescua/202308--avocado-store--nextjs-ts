@@ -1,27 +1,41 @@
 import NumberInput from '@components/NumberInput';
 import { AvocadoStoreContext } from '@context/index';
 import fetch from 'isomorphic-unfetch';
-import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { Feathericons } from 'src/assets/FeatherIcons';
 import styles from './product.module.css';
 
-const ProductItem = () => {
-	const {
-		query: { id },
-	} = useRouter();
-	const { state, updater } = useContext(AvocadoStoreContext);
-	const { count, product } = state;
-	const { addProductsToCart, setProduct, incrementCount, decrementCount } = updater;
+import { GetStaticPaths, GetStaticProps } from 'next';
 
-	useEffect(() => {
-		fetch(`/api/avo/${id}`)
-			.then((response) => response.json())
-			.then((json) => {
-				setProduct(json);
-			})
-			.catch((error) => console.error(error.message));
-	}, [product]);
+export const getStaticPaths: GetStaticPaths = async () => {
+	const response = await fetch(`${process.env.API_URL}/api/avo`);
+	const { data }: TAPIAvoResponse = await response.json();
+
+	const paths = data.map(({ id }) => ({ params: { id } }));
+
+	return {
+		// Statically generate all paths
+		paths,
+		// Display 404 for everything else
+		fallback: false,
+	};
+};
+
+// This also gets called at build time
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+	// params contains the post `id`.
+	// If the route is like /posts/1, then params.id is 1
+	const response = await fetch(`${process.env.API_URL}/api/avo/${params?.id}`);
+	const product = await response.json();
+
+	// Pass post data to the page via props
+	return { props: { product } };
+};
+
+const ProductItem = ({ product }: { product: TProduct }) => {
+	const { state, updater } = useContext(AvocadoStoreContext);
+	const { count } = state;
+	const { addProductsToCart, incrementCount, decrementCount } = updater;
 
 	return (
 		<main>
@@ -61,7 +75,7 @@ const ProductItem = () => {
 							<small style={{ paddingBottom: 3 }}>Quantity</small>
 							<NumberInput count={count} incrementValue={incrementCount} decrementValue={decrementCount} />
 						</li>
-						<li className={styles.actions} onClick={addProductsToCart}>
+						<li className={styles.actions} onClick={() => addProductsToCart(product)}>
 							<span className={styles['add-to-cart']}>Add to Cart</span>
 						</li>
 					</ul>
